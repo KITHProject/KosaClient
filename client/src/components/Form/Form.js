@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import {TextField, Button, Typography, Paper} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost } from '../../actions/posts';
+import { createPlayer } from '../../actions/players';
 
 
 const Form = () => {
 
-    const [postData, setPostData] = useState({
+    const [playerData, setPlayerData] = useState({
         accountName: '',
-        title: '',
+        kills:'',
+        deaths:'',
+        asists:'',
         points: '',
     })
 
@@ -17,7 +19,7 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(createPost(postData));
+        dispatch(createPlayer(playerData));
     }
 
     return(
@@ -31,16 +33,32 @@ const Form = () => {
                     variant="outlined" 
                     label="AccountName" 
                     fullWidth 
-                    value={postData.accountName}
-                    onChange={(e) => setPostData({ ...postData, accountName: e.target.value })}
+                    value={playerData.accountName}
+                    onChange={(e) => setPlayerData({ ...playerData, accountName: e.target.value })}
                 />
                 <TextField 
-                    name="title" 
+                    name="kills" 
                     variant="outlined" 
-                    label="Title" 
+                    label="Kills" 
                     fullWidth 
-                    value={postData.title}
-                    onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+                    value={playerData.kills}
+                    onChange={(e) => setPlayerData({ ...playerData, kills: e.target.value })}
+                />
+                <TextField 
+                    name="deaths" 
+                    variant="outlined" 
+                    label="Deaths" 
+                    fullWidth 
+                    value={playerData.deaths}
+                    onChange={(e) => setPlayerData({ ...playerData, deaths: e.target.value })}
+                />
+                <TextField 
+                    name="asists" 
+                    variant="outlined" 
+                    label="Asists" 
+                    fullWidth 
+                    value={playerData.asists}
+                    onChange={(e) => setPlayerData({ ...playerData, asists: e.target.value })}
                 />
                 <Button varinat="container" color="primary" type="submit" fullWidth> Przycisk </Button>
             </form>

@@ -1,8 +1,8 @@
 import * as api from '../api/index.js';
 
-export const getPosts = () => async (dispatch) => {
+export const getPlayers = () => async (dispatch) => {
     try {
-        const {data} = await api.fetchPosts();
+        const {data} = await api.fetchPlayers();
 
         dispatch({type: 'FETCH_ALL', payload: data});
     } catch (error) {
@@ -13,9 +13,9 @@ export const getPosts = () => async (dispatch) => {
 };
 
 
-export const createPost = (post) => async (dispatch) => {
+export const createPlayer = (player) => async (dispatch) => {
     try {
-        const {data} = await api.createPost(post);
+        const {data} = await api.createPlayer(player);
 
         dispatch({type: 'CREATE', payload: data});
     } catch (error) {
