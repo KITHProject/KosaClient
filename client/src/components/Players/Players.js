@@ -1,6 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import Player from './Player/Player'
+import {Grid, CircularProgress} from '@material-ui/core';
+import Player from './Player/Player';
+
 
 const Players = () => {
     
@@ -9,11 +11,18 @@ const Players = () => {
     console.log(players)
     
     return(
-        <>
-            <h1>Players</h1>
-            <Player/>
-            <Player/>
-        </>
+        players.lenght ? <CircularProgress/> : (
+            <Grid container spacing={5}>
+                {
+                    players.map((player)=>(
+                        <Grid key={player._id} item xs={12} sm={12} >
+                            <Player player={player}/>
+                        </Grid>
+                    ))
+                }
+
+            </Grid>
+        )        
     );
 }
 
